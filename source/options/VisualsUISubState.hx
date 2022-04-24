@@ -88,25 +88,31 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
-		
-		#if !mobile
+
 		var option:Option = new Option('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
 			'bool',
-			true);
+			#if android false #else true #end);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+		#if android
+		var option:Option = new Option('GameOver Vibration',
+			'If unchecked, will make the game to vibrate when you die.',
+			'vibration',
+			'bool',
+			false);
+		addOption(option);
+		option.onChange = onChangeGameOverVibration;
 		#end
 
 		super();
 	}
 
-	#if !mobile
 	function onChangeFPSCounter()
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.showFPS;
 	}
-	#end
 }
