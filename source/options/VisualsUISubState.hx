@@ -115,4 +115,14 @@ class VisualsUISubState extends BaseOptionsMenu
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.showFPS;
 	}
+
+	#if android
+	function onChangeGameOverVibration()
+	{
+		if(ClientPrefs.vibration)
+		{
+			Hardware.vibrate(500);
+		}
+	}
+	#end
 }
