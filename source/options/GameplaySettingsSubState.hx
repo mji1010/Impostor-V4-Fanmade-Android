@@ -38,7 +38,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'Check this if you want to play with\na controller instead of using your Keyboard.',
 			'controllerMode',
 			'bool',
-			false);
+			#if android true #else false #end);
 		addOption(option);
 
 		var option:Option = new Option('Middlescroll',
