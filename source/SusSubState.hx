@@ -155,7 +155,7 @@ class SusSubState extends MusicBeatSubstate
 		add(timerTxt);
 		timerTxt.text = Std.string(timer);
 
-		FlxG.stage.window.textInputEnabled = true
+		FlxG.stage.window.textInputEnabled = true;
 	}
 
 
