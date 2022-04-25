@@ -40,15 +40,19 @@ class Sorry extends MusicBeatState
 		sorry.setFormat("", 32, FlxColor.WHITE, CENTER);
 		sorry.screenCenter(Y);
 		add(sorry);
+
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
 	}
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.keys.justPressed.ENTER) {
+		if (controls.ACCEPT) {
 			FlxG.sound.play(Paths.sound('sus'));
 			MusicBeatState.switchState(new MainMenuState());
 		}
-		if (FlxG.keys.justPressed.ESCAPE) {
+		if (controls.BACK) {
 			CoolUtil.browserLoad('https://github.com/MerphiG/Impostor-V4-Fanmade');
 		}
 		super.update(elapsed);
