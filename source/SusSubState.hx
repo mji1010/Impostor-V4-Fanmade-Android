@@ -154,6 +154,8 @@ class SusSubState extends MusicBeatSubstate
 		timerTxt.font = Paths.font('metro.otf');
 		add(timerTxt);
 		timerTxt.text = Std.string(timer);
+
+		FlxG.stage.window.textInputEnabled = true
 	}
 
 
