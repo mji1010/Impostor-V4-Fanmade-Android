@@ -156,6 +156,30 @@ class SusSubState extends MusicBeatSubstate
 		timerTxt.text = Std.string(timer);
 
 		FlxG.stage.window.textInputEnabled = true;
+		FlxG.stage.window.onTextInput.add(function(letter:String)
+		{
+			if (realWord.charAt(position) == '?')
+			{
+				if (FlxG.keys.justPressed.SLASH && FlxG.keys.pressed.SHIFT)
+					correctLetter();
+				else if (!FlxG.keys.justPressed.SHIFT)
+					FlxG.sound.play(Paths.sound('BUZZER', 'shared'));
+			}
+			else if (realWord.charAt(position) == '!')
+			{
+				if (FlxG.keys.justPressed.ONE && FlxG.keys.pressed.SHIFT)
+					correctLetter();
+				else if (!FlxG.keys.justPressed.SHIFT)
+					FlxG.sound.play(Paths.sound('BUZZER', 'shared'));
+			}
+			else
+			{
+				if (letter.toLowerCase() == realWord.charAt(position).toLowerCase())
+					correctLetter();
+				else
+					FlxG.sound.play(Paths.sound('BUZZER', 'shared'));
+			}
+		});
 	}
 
 
@@ -217,6 +241,7 @@ class SusSubState extends MusicBeatSubstate
 	}
 
 	override public function close() {
+		FlxG.stage.window.textInputEnabled = false;
 		FlxG.autoPause = true;
 		super.close();
 	}
