@@ -352,7 +352,6 @@ class ChartingState extends MusicBeatState
 			add(tipText);
 		}
 		add(UI_box);
-
 		addSongUI();
 		addSectionUI();
 		addNoteUI();
